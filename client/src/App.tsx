@@ -117,7 +117,7 @@ const MyForm = styled.form`
 
 const ButtonAge = styled.button`
     border: 3px solid #01c52c;
-    color: #ec017e;
+    color: #000;
     background-color: transparent;
     font-size: 1.25rem;
     padding: 1rem;
@@ -135,8 +135,8 @@ function App() {
       const anoAtual = new Date().getFullYear();
       const idadeCalculada = anoAtual - parseInt(anoNascimento, 10);
 
-      if (idadeCalculada < 0) {
-          setErroIdade('A data inserida está errada.');
+      if (idadeCalculada < 0 || idadeCalculada >= 130) {
+          setErroIdade(', a data inserida está errada.');
       } else {
           setErroIdade('');
           setIdade(idadeCalculada);
@@ -170,12 +170,14 @@ function App() {
                     <ButtonAge onClick={calcularIdade}>
                         Find out age
                     </ButtonAge>
+
                     {idade !== '' && erroIdade === '' && (
                         <p>Olá {nome}, você tem {idade} anos de idade!</p>
                     )}
                     {erroIdade !== '' && (
-                        <p>{erroIdade}</p>
+                        <p>{nome}{erroIdade}</p>
                     )}
+
                 </div>
             </MyForm>
         </Container>
