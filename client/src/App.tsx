@@ -135,7 +135,7 @@ function App() {
       const anoAtual = new Date().getFullYear();
       const idadeCalculada = anoAtual - parseInt(anoNascimento, 10);
 
-      if (idadeCalculada < 0 || idadeCalculada >= 130) {
+      if (idadeCalculada < 0 || idadeCalculada > 130) {
           setErroIdade(', a data inserida está errada.');
       } else {
           setErroIdade('');
